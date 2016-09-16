@@ -1,0 +1,32 @@
+<h1>Create Blog</h1>
+<br>
+<%= form_for @blog, html: { class: "form-horizontal", id: "form-horizontal" } do |f| %>
+  <div class="col-md-6">
+    <% if @blog.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
+        <ul>
+          <% @blog.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+  	  <%= f.label :blog_title %><br>
+  	  <%= f.text_field :title, class: 'form-control' %>
+  	</div>
+
+  	<div class="form-group">
+  	     <%= f.label :blog_text %><br>
+  	     <%= f.text_area :text, rows: 10, class: 'form-control' %>
+    </div>
+
+    <br>
+    <div class="form-group">
+      <%= f.button (t "Add Blog"), class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>
+<%= debug @blog %>

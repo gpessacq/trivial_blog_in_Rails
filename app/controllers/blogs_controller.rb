@@ -1,15 +1,20 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
+
   def index
-    @blogs = Blog.all
+    @blogs = Blog.order("id DESC").all
   end
 
   def show
     @blog = Blog.find(params[:id])
   end
 
+  def new
+    @blog = Blog.new
+  end
+
   def create
-    @blog = Blog.new(sala_params)
+    @blog = Blog.new(blog_params)
 
     respond_to do |format|
       if @blog.save
@@ -28,7 +33,7 @@ class BlogsController < ApplicationController
       @blog = Blog.find(params[:id])
     end
 
-    def sala_params
-      params.require(:blog).permit(:name, :text)
+    def blog_params
+      params.require(:blog).permit(:title, :text)
     end
 end
