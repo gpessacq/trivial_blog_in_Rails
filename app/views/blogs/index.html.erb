@@ -1,0 +1,5 @@
+<h1>Blogs:</h1>
+<% @blogs.each do |blog| %>
+  <h3><%= link_to blog.title, blog_path( action: 'show', id: blog.id) %></h3>
+  <p><%= blog.text %></p>
+<% end %>
