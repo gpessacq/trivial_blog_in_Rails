@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :delete]
 
   def index
     @blogs = Blog.order("id DESC").all
@@ -25,6 +26,9 @@ class BlogsController < ApplicationController
         format.json { render json: @blog.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def delete
   end
 
   private
