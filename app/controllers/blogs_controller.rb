@@ -16,19 +16,22 @@ class BlogsController < ApplicationController
 
   def create
     @blog = Blog.new(blog_params)
+    @blog.user_id = current_user.id
 
     respond_to do |format|
       if @blog.save
         format.html { redirect_to @blog, notice: 'Record added.' }
-        format.json { render action: 'show', status: :created, location: @blog }
       else
         format.html { render action: 'new' }
-        format.json { render json: @blog.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  def delete
+  def destroy
+    @blog.destroy
+    respond_to do |format|
+      format.html { redirect_to blogs_url, notice: 'Blog was successfully destroyed.' }
+    end
   end
 
   private
@@ -38,6 +41,6 @@ class BlogsController < ApplicationController
     end
 
     def blog_params
-      params.require(:blog).permit(:title, :text)
+      params.require(:blog).permit(:title, :text, :user_id)
     end
 end

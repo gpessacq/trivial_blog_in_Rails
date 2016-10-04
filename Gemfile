@@ -40,6 +40,10 @@ group :development, :test do
   gem 'pry'
 end
 
+group :test do
+  gem 'minitest-reporters',       '1.1.9'
+end
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console'

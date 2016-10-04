@@ -2,4 +2,5 @@
 <% @blogs.each do |blog| %>
   <h3><%= link_to blog.title, blog_path( action: 'show', id: blog.id) %></h3>
   <p><%= blog.text %></p>
+  <hr>
 <% end %>
