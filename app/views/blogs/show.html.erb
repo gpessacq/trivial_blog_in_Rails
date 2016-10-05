@@ -3,3 +3,12 @@
 <p>By: <%= @blog.user.email %></p>
 
 <p><%= @blog.text %></p>
+
+<% if !current_user.nil? && current_user.id == @blog.user_id %>
+  <p>
+    <%= link_to 'Edit Blog', edit_blog_path(@blog), class: "btn btn-primary" %>
+  </p>
+  <p>
+    <%= link_to 'Destroy Blog', @blog, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+  </p>
+<% end %>
