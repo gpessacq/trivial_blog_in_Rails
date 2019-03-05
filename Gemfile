@@ -9,7 +9,7 @@ gem 'mysql2'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass', '>= 3.4.1'
 gem 'sass-rails', '~> 5.0'
 gem 'devise'
 gem 'devise-bootstrap-views'
